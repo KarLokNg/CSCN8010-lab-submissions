@@ -15119,7 +15119,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[114]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -15133,8 +15133,11 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_diabetes</span><span class="p">(</span><span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scaled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Approximately 70-15-15 split</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_vali</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_vali</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span> <span class="mf">0.12</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span> <span class="mi">42</span><span class="p">)</span>
+<span class="c1"># split into X_train and X_test, y_train and y_test first</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># further split the original &quot;test&quot; set into 2, for test and validation</span>
+<span class="n">X_vali</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_vali</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># printing the shape to check dimensions</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -15159,9 +15162,9 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>(349, 10)
-(48, 10)
-(45, 10)
+<pre>(309, 10)
+(66, 10)
+(67, 10)
 </pre>
 </div>
 </div>
@@ -15175,7 +15178,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[115]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
@@ -15206,7 +15209,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
               <span class="nb">str</span><span class="p">(</span><span class="n">mean_absolute_percentage_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_train_pred</span><span class="p">)))</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Validation MAPE: &#39;</span> <span class="o">+</span> \
               <span class="nb">str</span><span class="p">(</span><span class="n">mean_absolute_percentage_error</span><span class="p">(</span><span class="n">y_vali</span><span class="p">,</span> <span class="n">y_vali_pred</span><span class="p">)))</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Train R2: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_vali</span><span class="p">,</span> <span class="n">y_vali_pred</span><span class="p">)))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Train R2: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_train_pred</span><span class="p">)))</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Validation R2: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_vali</span><span class="p">,</span> <span class="n">y_vali_pred</span><span class="p">)))</span>
         
       
@@ -15222,7 +15225,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[116]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MLR&quot;</span><span class="p">)</span>
@@ -15256,30 +15259,30 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>MLR
-Train MAE: 43.90172568436122
-Validation MAE: 40.96787164357992
-Train MAPE: 0.394805661417686
-Validation MAPE: 0.37875534231323277
-Train R2: 0.5684398040231259
-Validation R2: 0.5684398040231259
+Train MAE: 44.09783499263568
+Validation MAE: 42.31000452123342
+Train MAPE: 0.3959249325786459
+Validation MAPE: 0.35917661909863935
+Train R2: 0.5244124363545944
+Validation R2: 0.5488623329503926
 
 Univariate Polynomial
 2
-Train MAE: 52.40807850282762
-Validation MAE: 47.479107713163216
-Train MAPE: 0.4859676450692311
-Validation MAPE: 0.45573459983931813
-Train R2: 0.4731868903291634
-Validation R2: 0.4731868903291634
+Train MAE: 51.88308912495529
+Validation MAE: 52.91980477008081
+Train MAPE: 0.48217232352802764
+Validation MAPE: 0.438735947256621
+Train R2: 0.3668374933864168
+Validation R2: 0.303586568283867
 
 Mulivariate Polynomial
 65
-Train MAE: 39.371332676193305
-Validation MAE: 42.23439821183154
-Train MAPE: 0.3529149387623396
-Validation MAPE: 0.36758510948350337
-Train R2: 0.5513908106420733
-Validation R2: 0.5513908106420733
+Train MAE: 39.42527558975147
+Validation MAE: 41.87466058403149
+Train MAPE: 0.34999955927472565
+Validation MAPE: 0.35875678280674345
+Train R2: 0.6081125571650757
+Validation R2: 0.5351386788756555
 </pre>
 </div>
 </div>
@@ -15297,8 +15300,8 @@ Validation R2: 0.5513908106420733
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Q5">Q5<a class="anchor-link" href="#Q5">&#182;</a></h3><p>Each metric is applied to both the training data, and the validation data. This is a way to check for overfitting. If the performance metric for the training data is much lower than the performance metric for the validation data, this is a sign that overfitting is occuring. In our case for the 3 models, there isn't a significant difference between the performance metrics for training and validation, and thus I do not think that overfitting is occuring.</p>
 <p>The MAE is the Mean Absolute Error. This can be interpreted as the the mean distance between the predicted results and the true values of the results. It has a minimum value of 0, but it has no maximum value. In the case of our 3 models here, we can see that the Multivariate Polynomial model has the lowest MAE. That means that, on average, the distance between the predicted value and the true value is the closest. It is difficult to interpret the performance of the model with this value in isolation, and as such different metrics are also usually used as performance metrics.</p>
-<p>The MAPE is the Mean Average Performance Error. This can be interpreted as the mean percentage difference between the predicted results and the true values. As it is a percentage, the value ranges between 0 and 100. Compared to MAE, this gives us some context to how our model is performing as MAPE as it is a percentage error instead of simply the mean distance. In the case of our 3 models, the MLR model and the Multivariate Polynomial models perform similarly (with Train/Validation MAPE of 0.39/0.38 and 0.35/0.37 respectively), while the Univariate Polynomial model performs poorly incomparison (0.49/0.46).</p>
-<p>The $R^2$ value can be interpreted as the proportion of the variance in the data that can be explained by the model. It is a value with a max value of 1, but no minimum value. A maximum value of 1 would mean that our independent variables perfectly explains the dependent variables. The results of our 3 models is similar to the MAPE, where the linear model and the multivariate polynomial model perform similarly, while the univariate model does not perform as well. However, even our best performing model, thelinear model has an $R^2$ value of 0.57, which is not a very high value.</p>
+<p>The MAPE is the Mean Average Performance Error. This can be interpreted as the mean percentage difference between the predicted results and the true values. As it is a percentage, the value ranges between 0 and 100. Compared to MAE, this gives us some context to how our model is performing as MAPE as it is a percentage error instead of simply the mean distance. In the case of our 3 models, the MLR model and the Multivariate Polynomial models perform similarly (with Train/Validation MAPE of 0.40/0.36 and 0.35/0.36 respectively), while the Univariate Polynomial model performs poorly incomparison (0.48/0.44).</p>
+<p>The $R^2$ value can be interpreted as the proportion of the variance in the data that can be explained by the model. It is a value with a max value of 1, but no minimum value. A maximum value of 1 would mean that our independent variables perfectly explains the dependent variables. The results of our 3 models is similar to the MAPE, where the linear model and the multivariate polynomial model perform similarly, while the univariate model does not perform as well. However, even our best performing model, the linear model has a validation $R^2$ value of 0.55, which is not a very high value.</p>
 
 </div>
 </div>
